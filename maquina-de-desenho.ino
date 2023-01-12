@@ -1,7 +1,7 @@
 // adicionar à biblioteca
 #include <Unistep2.h>
 
-#define ldrX A4
+#define ldrX A4 // declração de constantes para sensores de luz
 #define ldrY A5
 
 // Definir os motores
@@ -10,7 +10,7 @@ Unistep2 stepperY(8, 9, 10, 11, 4096, 1000);
 
 void setup() {
   pinMode(7, INPUT_PULLUP);  // designação de pino de botão de ON/OFF
-  Serial.begin(9600);        // inicia o Serial (muito parecido com uma consola de comandos)
+  Serial.begin(9600);        // inicia o Serial (muito parecio com uma consola de comandos)
 }
 
 void loop() {
@@ -24,10 +24,10 @@ void loop() {
       stepperY.run();
     }
 
-    int aa0 = analogRead(A0) - 511;  // declaração e atribuição de variáveis de potenciometros
+    int aa0 = analogRead(A0) - 511;  // declaração e atribuição de variáveis de potenciómetros
     int aa1 = analogRead(A1) - 511;
 
-    stepperX.steptime = int(map(abs(aa0), 0, 512, 4000, 1000));  // atribuição de velocidade de passos de motor consoante o valor do potenciômetro
+    stepperX.steptime = int(map(abs(aa0), 0, 512, 4000, 1000));  // atribuição de velocidade de passos de motor consoante o valor do potenciómetro
     stepperY.steptime = int(map(abs(aa1), 0, 512, 4000, 1000));
 
     int dir0 = aa0 > 0 ? 1 : -1;  // condição if para detectar a direção do motor
